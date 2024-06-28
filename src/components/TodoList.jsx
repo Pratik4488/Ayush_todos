@@ -1,27 +1,36 @@
-import React from 'react'
+import React from "react";
 import { MdDelete } from "react-icons/md";
 
-
 const TodoList = (props) => {
-  
   return (
     <li className="list-item">
-         {props.item}
-         <span className="date">
-          <input type="date" name="" id="" />
-         </span>
-        <span className="checkbox">
-            <input type="checkbox" />
-        </span>
-       
-        <span className='icons'>
-        <MdDelete  className="fa-solid fa-trash-can icon-delete" onClick={e=>{
-            props.deleteItem(props.index)
-        }}/>
-        
-        </span>
-    </li>
-  )
-}
+      <div className="item-container">
+        <div className="list-content">
+          <input type="checkbox" className="checkbox" />
+          <div className="list-content-value">
+            <h3>{props.item.title}</h3>
+            <p> {props.item.desc}</p>
+          </div>
+        </div>
 
-export default TodoList
+        <span className="status-text-container">
+          <div className="item-date">{props.item.date}</div>
+          <div className="item-status">
+            {props.item.isCompleted ? "Completed" : "Pending"}
+          </div>
+        </span>
+      </div>
+
+      <span className="icons">
+        <MdDelete
+          className=" icon-delete"
+          onClick={(e) => {
+            props.deleteItem(props.index);
+          }}
+        />
+      </span>
+    </li>
+  );
+};
+
+export default TodoList;
